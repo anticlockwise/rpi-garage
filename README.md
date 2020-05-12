@@ -1,2 +1,2 @@
-# rpi-network-monitor
-Network traffic monitor using Raspberry Pi
+# rpi-garage
+Garage door controller Raspberry Pi device side code
