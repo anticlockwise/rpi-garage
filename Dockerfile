@@ -1,4 +1,4 @@
-FROM rongzhou/rpi-garage-device-base:latest
+FROM rongzhou/rpi-garage-device-base:arm
 
 WORKDIR /usr/src/app
 
