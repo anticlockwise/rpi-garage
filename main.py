@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import argparse
 import json
 from app.garage.opener import (
     GarageDoorControlListener,
@@ -42,9 +43,9 @@ def initialize_shadow(config):
     return shadow_client
 
 
-def initialize():
+def initialize(config_location):
     config = None
-    with open("/opt/rpigarage/conf.json") as f:
+    with open(config_location) as f:
         config = json.load(f)
     if not config:
         raise RuntimeError("Error loading config file for the device")
@@ -56,8 +57,22 @@ def initialize():
     return GarageDoorControlListener(config, relay, sensor, device_shadow_controller)
 
 
+def options():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-c",
+        "--config",
+        metavar="FILE",
+        default="/opt/rpigarage/conf.json",
+        dest="config_location",
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    controller = initialize()
+    args = options()
+    config_location = args.config_location
+    controller = initialize(config_location)
     controller.listen()
     while True:
         pass
