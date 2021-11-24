@@ -1,7 +1,7 @@
 appdirs==1.4.3
 attrs==19.3.0
 awscrt==0.5.13
-awsiotsdk==1.0.6
+awsiotsdk==1.7.0
 black==19.10b0
 click==7.1.2
 colorzero==1.1
